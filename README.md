@@ -42,7 +42,7 @@ Designed with modern glassmorphism aesthetics, responsive grid layouts, clean mi
 ├── images/                      # Real classroom, workshop, and graduate photography assets
 │   ├── Navigartion-logo.png     # Primary navbar logo
 │   └── languages-cube-logo-main.png # High-res brand logo asset
-└── public/                      # Asset pack directory
+└── assets/                      # Asset pack directory
     ├── images/
     │   ├── flags/               # Circular country flag SVGs (germany.svg, japan.svg, etc.)
     │   └── icons/               # SVG social icons (instagram.svg, facebook.svg, linkedin.svg)

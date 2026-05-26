@@ -77,18 +77,18 @@ function renderPrograms() {
 function renderCourses() {
   const container = document.getElementById("courseCards");
   const flagMap = {
-    german: "public/images/flags/germany.svg",
-    french: "public/images/flags/france.svg",
-    spanish: "public/images/flags/spain.svg",
-    japanese: "public/images/flags/japan.svg",
-    korean: "public/images/flags/korea.svg",
-    russian: "public/images/flags/russia.svg"
+    german: "assets/images/flags/germany.svg",
+    french: "assets/images/flags/france.svg",
+    spanish: "assets/images/flags/spain.svg",
+    japanese: "assets/images/flags/japan.svg",
+    korean: "assets/images/flags/korea.svg",
+    russian: "assets/images/flags/russia.svg"
   };
 
   container.innerHTML = siteData.courses
     .map(
       (course) => {
-        const flagUrl = flagMap[course.slug] || "public/images/icons/star.svg";
+        const flagUrl = flagMap[course.slug] || "assets/images/icons/star.svg";
         const ctaHref = course.slug === "german" ? "german-course.html" : "#contact";
         return `
         <article class="course-card">
@@ -133,18 +133,18 @@ function renderMethodology() {
 function renderLevelCards() {
   const container = document.getElementById("levelCards");
   const flagMap = {
-    german: "public/images/flags/germany.svg",
-    french: "public/images/flags/france.svg",
-    spanish: "public/images/flags/spain.svg",
-    japanese: "public/images/flags/japan.svg",
-    korean: "public/images/flags/korea.svg",
-    russian: "public/images/flags/russia.svg"
+    german: "assets/images/flags/germany.svg",
+    french: "assets/images/flags/france.svg",
+    spanish: "assets/images/flags/spain.svg",
+    japanese: "assets/images/flags/japan.svg",
+    korean: "assets/images/flags/korea.svg",
+    russian: "assets/images/flags/russia.svg"
   };
 
   container.innerHTML = siteData.courses
     .map(
       (course) => {
-        const flagUrl = flagMap[course.slug] || "public/images/icons/star.svg";
+        const flagUrl = flagMap[course.slug] || "assets/images/icons/star.svg";
         return `
         <article class="program-card">
           <div class="flag">
@@ -219,7 +219,7 @@ function renderFaq() {
       <div class="faq-item">
         <button class="faq-question">
           <span>${item.q}</span>
-          <img src="public/images/icons/plus.svg" alt="Toggle" class="faq-toggle-icon" />
+          <img src="assets/images/icons/plus.svg" alt="Toggle" class="faq-toggle-icon" />
         </button>
         <div class="faq-answer">
           <p>${item.a}</p>
