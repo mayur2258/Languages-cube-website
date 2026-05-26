@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Languages Cube image placeholder</title>
+  <desc id="desc">Reserved space for authentic Languages Cube photography.</desc>
+  <rect width="1400" height="1000" fill="#011e2d"/>
+  <circle cx="1110" cy="170" r="220" fill="#df8a1b" opacity=".22"/>
+  <circle cx="180" cy="820" r="260" fill="#f2f1ed" opacity=".1"/>
+  <path d="M230 660c155-205 329-258 523-158 95 49 178 45 250-14 57-47 111-58 162-34 43 21 76 62 99 124v172H230Z" fill="#f2f1ed" opacity=".18"/>
+  <rect x="105" y="92" width="1190" height="816" rx="44" fill="none" stroke="#f2f1ed" stroke-width="3" opacity=".35"/>
+  <text x="700" y="470" fill="#ffffff" font-family="Arial, sans-serif" font-size="54" font-weight="700" text-anchor="middle">Languages Cube Photo Slot</text>
+  <text x="700" y="540" fill="#f2f1ed" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">Replace with uploaded instructor, student, class, stage or event photo</text>
+</svg>
