@@ -115,12 +115,35 @@ function renderCourses() {
 
 function renderMethodology() {
   const container = document.getElementById("methodologySteps");
+  const icons = [
+    // Step 01: Diagnosis/Search
+    `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>`,
+    // Step 02: Roadmap
+    `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+      <line x1="9" y1="3" x2="9" y2="18"></line>
+      <line x1="15" y1="6" x2="15" y2="21"></line>
+    </svg>`,
+    // Step 03: Practice/Classes
+    `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>`,
+    // Step 04: Readiness/Trophy
+    `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>`
+  ];
+
   container.innerHTML = siteData.methodology
     .map(
-      (item) => `
-      <article class="step">
-        <strong>${item.step}</strong>
-        <div>
+      (item, idx) => `
+      <article class="step" data-step="${idx + 1}">
+        <div class="step-icon-wrapper">${icons[idx] || ""}</div>
+        <div class="step-content">
           <h3>${item.title}</h3>
           <p>${item.text}</p>
         </div>
@@ -198,17 +221,132 @@ function renderEvents() {
 
 function renderTestimonials() {
   const container = document.getElementById("testimonialCards");
+  const dotsContainer = document.getElementById("sliderDots");
+  
+  if (!container || !dotsContainer) return;
+  
+  // Render cards
   container.innerHTML = siteData.testimonials
     .map(
       (item) => `
       <article class="testimonial-card">
-        <p>${item.text}</p>
-        <h3>${item.name}</h3>
-        <span>${item.course}</span>
+        <div class="testimonial-avatar-wrapper">
+          <img src="${item.image}" alt="Student portrait of ${item.name}" class="testimonial-avatar" />
+        </div>
+        <div class="testimonial-content">
+          <p>${item.text}</p>
+          <div class="testimonial-meta">
+            <h3>${item.name}</h3>
+            <span>${item.course}</span>
+          </div>
+        </div>
       </article>
     `
     )
     .join("\n");
+
+  // Render dots
+  dotsContainer.innerHTML = siteData.testimonials
+    .map((_, index) => `<button class="dot${index === 0 ? " active" : ""}" data-index="${index}" aria-label="Go to slide ${index + 1}"></button>`)
+    .join("\n");
+
+  const dots = dotsContainer.querySelectorAll(".dot");
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const index = parseInt(dot.getAttribute("data-index"));
+      const card = container.children[index];
+      if (card) {
+        container.scrollTo({
+          left: card.offsetLeft,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+
+  // Drag to scroll logic
+  let isDown = false;
+  let startX;
+  let scrollLeftState;
+
+  container.addEventListener("mousedown", (e) => {
+    isDown = true;
+    container.classList.add("dragging");
+    container.style.scrollSnapType = "none";
+    container.style.scrollBehavior = "auto";
+    startX = e.pageX - container.offsetLeft;
+    scrollLeftState = container.scrollLeft;
+  });
+
+  const stopDragging = () => {
+    if (!isDown) return;
+    isDown = false;
+    container.classList.remove("dragging");
+    container.style.scrollSnapType = "x mandatory";
+    container.style.scrollBehavior = "smooth";
+    
+    // Snap to nearest card
+    const cardWidth = container.children[0] ? container.children[0].offsetWidth + 24 : 324;
+    const index = Math.round(container.scrollLeft / cardWidth);
+    const targetCard = container.children[index];
+    if (targetCard) {
+      container.scrollTo({
+        left: targetCard.offsetLeft,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  container.addEventListener("mouseleave", stopDragging);
+  container.addEventListener("mouseup", stopDragging);
+
+  container.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    container.scrollLeft = scrollLeftState - walk;
+  });
+
+  // Prev / Next button logic
+  const prevBtn = document.getElementById("sliderPrev");
+  const nextBtn = document.getElementById("sliderNext");
+
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener("click", () => {
+      const cardWidth = container.children[0] ? container.children[0].offsetWidth + 24 : 324;
+      container.scrollBy({
+        left: -cardWidth,
+        behavior: "smooth"
+      });
+    });
+
+    nextBtn.addEventListener("click", () => {
+      const cardWidth = container.children[0] ? container.children[0].offsetWidth + 24 : 324;
+      container.scrollBy({
+        left: cardWidth,
+        behavior: "smooth"
+      });
+    });
+  }
+
+  // Highlight dot on scroll
+  container.addEventListener("scroll", () => {
+    const scrollLeft = container.scrollLeft;
+    const cardWidth = container.children[0] ? container.children[0].offsetWidth + 24 : 324; // Card width + gap
+    const activeIndex = Math.min(
+      dots.length - 1,
+      Math.max(0, Math.round(scrollLeft / cardWidth))
+    );
+    
+    dots.forEach((dot, idx) => {
+      if (idx === activeIndex) {
+        dot.classList.add("active");
+      } else {
+        dot.classList.remove("active");
+      }
+    });
+  });
 }
 
 function renderFaq() {

@@ -129,38 +129,38 @@ const siteData = {
     {
       name: "Hardik Sonalkar",
       course: "German A1",
-      text:
-        "A beginner German learner moved from hesitation to short conversations within weeks through clear explanations and speaking practice."
+      image: "images/students/hardik.jpg",
+      text: "“I have recently completed my A1 from Languages Cube and let me tell you one thing — it was the most wholesome and lucrative class to learn German. Prajakta Ma’am is very virtuous and friendly. I can easily speak and express German in just a few weeks of class. I would recommend this class to anyone who wants to learn German precisely and quickly.”"
     },
     {
       name: "Abhishek More",
       course: "Language learner",
-      text:
-        "Students value the mix of language classes, guidance and approachable trainer support while choosing the right course path."
+      image: "images/students/abhishek.jpg",
+      text: "“Languages Cube is the best platform for learning languages. I recommend it to everyone willing to learn a language. They not only provide language classes but also consultancy. I’m glad to be a student of this class.”"
     },
     {
       name: "Rahul Gawas",
       course: "German",
-      text:
-        "Interactive German lessons made grammar and vocabulary feel manageable instead of heavy or mechanical."
+      image: "images/students/rahul_gawas.jpg",
+      text: "“If anybody wants to learn a foreign language and is skeptical about the teaching, Languages Cube is the best option. I joined for German classes and Prajakta Ma’am’s interactive teaching style made learning feel like a leisure activity rather than a hectic task.”"
     },
     {
       name: "Bhakti Utekar",
       course: "Korean",
-      text:
-        "Korean learners appreciate steady trainer support, patient guidance and a friendly classroom environment."
+      image: "images/students/bhakti.jpg",
+      text: "“Deepashri Ma’am, who taught me Korean, was sweet and kind throughout my learning journey. Prajakta Ma’am was also very friendly and guiding. I would highly recommend Languages Cube to anyone wanting to learn a new language.”"
     },
     {
       name: "Bhavesh Shashikant Vaze",
       course: "German",
-      text:
-        "Complex German grammar becomes easier when concepts are broken into simple examples and repeated practice."
+      image: "images/students/bhavesh.jpg",
+      text: "“I am extremely happy with the German language class I am attending, and I owe much of my success to Prajakta Ma’am. She is friendly, approachable, and explains complex concepts in a very easy way.”"
     },
     {
       name: "Priya Lokhande",
       course: "Japanese N5",
-      text:
-        "Flexible online Japanese classes helped a relocating student continue JLPT N5 preparation without losing momentum."
+      image: "images/students/priya.webp",
+      text: "“I had an amazing experience with Languages Cube’s Japanese N5 class thanks to Rutuja Ma’am’s flexible teaching approach. Even after relocating to Bangalore, I could continue lessons online without interruptions. Highly recommended for anyone starting their Japanese language journey.”"
     }
   ],
   faqs: [
