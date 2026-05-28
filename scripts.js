@@ -13,6 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  const dropdownToggleBtn = document.getElementById("dropdownToggleBtn");
+  const courseDropdown = document.getElementById("courseDropdown");
+
+  if (dropdownToggleBtn && courseDropdown) {
+    dropdownToggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      courseDropdown.classList.toggle("open");
+      dropdownToggleBtn.classList.toggle("active");
+    });
+  }
+
   renderStats();
   renderPrograms();
   renderCourses();

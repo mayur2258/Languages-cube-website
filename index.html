@@ -90,7 +90,15 @@
         <a href="#top">Home</a>
         <a href="#about">About</a>
         <div class="nav-group">
-          <a href="#courses">Courses</a>
+          <div class="nav-toggle-wrapper">
+            <a href="#courses">Courses</a>
+            <button class="dropdown-toggle-btn" id="dropdownToggleBtn" aria-label="Toggle courses dropdown">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="toggle-icon">
+                <line x1="12" y1="5" x2="12" y2="19" class="vertical-line"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+          </div>
           <div class="nav-dropdown" id="courseDropdown">
             <a href="#courses">All courses</a>
             <a href="german-course.html">German</a>
