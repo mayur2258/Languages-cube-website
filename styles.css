@@ -1114,6 +1114,23 @@ h3 {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+#programs .program-card {
+  background-color: #011e2d;
+  color: #df8a1b;
+  border-color: rgba(223, 138, 27, 0.15);
+}
+
+#programs .program-card h3 {
+  color: #df8a1b;
+}
+
+#programs .program-card p {
+  color: rgba(223, 138, 27, 0.8);
+}
+
+#programs .program-card:hover {
+  border-color: rgba(223, 138, 27, 0.4);
+  box-shadow: 0 20px 45px rgba(223, 138, 27, 0.08);
 }
 
 @media (max-width: 720px) {
